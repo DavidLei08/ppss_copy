@@ -1,0 +1,21 @@
+/*
+*全局css样式
+* global.css
+* David Lei
+*/
+
+/*@CHARSET "UTF-8";
+
+ html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+ }
+
+ body {
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+ 	position: absolute;
+}

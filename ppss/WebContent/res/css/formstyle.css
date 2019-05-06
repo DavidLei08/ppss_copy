@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+input {
+	left: 330px;
+	top: 332px;
+	width: 81px;
+	height: 34px;
+	border-radius: 4px;
+	color: rgba(16, 16, 16, 1);
+	font-size: 14px;
+	text-align: center;
+	font-family: Microsoft Yahei;
+	border: 1px solid rgba(187, 187, 187, 1);
+}
+
+select {
+	left: 251px;
+	top: 207px;
+	width: 103px;
+	height: 30px;
+	line-height: 20px;
+	color: rgba(16, 16, 16, 1);
+	font-size: 14px;
+	font-family: Roboto;
+	border: 1px solid rgba(187, 187, 187, 1);
+}
+
+a {
+	left: 221px;
+	top: 332px;
+	width: 79px;
+	height: 33px;
+	border-radius: 4px;
+	background-color: rgba(255, 255, 255, 1);
+	color: rgba(16, 16, 16, 1);
+	font-size: 14px;
+	text-align: center;
+	font-family: Microsoft Yahei;
+	border: 1px solid rgba(187, 187, 187, 1);
+}
+
+input[type=checkbox] {
+	-ms-transform: scale(0.5); /* IE */
+	-moz-transform: scale(0.5); /* FireFox */
+	-webkit-transform: scale(0.5); /* Safari and Chrome */
+	-o-transform: scale(0.5); /* Opera */
+}
+
+button {
+	color: rgb(212, 106, 64);
+	text-shadow: black 5px 3px 3px;
+}
+
+#table1 tr {
+	left: 100px;
+	top: 376px;
+	width: 672px;
+	height: 60px;
+	line-height: 20px;
+	color: rgba(16, 16, 16, 1);
+	font-size: 14px;
+	text-align: center;
+	font-family: Roboto;
+	border: 1px solid rgba(187, 187, 187, 1);
+}

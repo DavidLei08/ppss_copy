@@ -1,0 +1,54 @@
+/**
+David Lei
+登录页css样式
+*/
+@CHARSET "UTF-8";
+#title {
+	position: absolute;
+	top: 15%;
+	left: 33%;
+	width: 35%;
+}
+
+#Layer1 {
+	position: absolute;
+	width: 1600px;
+	height: 30px;
+	z-index: 1;
+	left: 0px;
+	top: 705px;
+}
+
+#login {
+	position: absolute;
+	width: 34%;
+	height: 39%;
+	z-index: 1;
+	left: 33%;
+	top: 33%;
+	background-color: rgba(174, 235, 238, 0.5);
+	border: 1px solid #0066FF;
+}
+
+input {
+	background-color: transparent;
+	font-family: Verdana, Arial;
+	color: #000099;
+	border-color: #0066FF;
+	border-width: 0.5px;
+	height:55%;
+}
+
+ html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+ }
+
+ body {
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+ 	position: absolute;
+}

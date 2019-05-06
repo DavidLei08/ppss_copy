@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppss.dao.ItemDao"><!--命名空间和Dao同名 -->
+
+<insert id="add" parameterType="com.ppss.model.ItemModel"> 
+insert into t_item
+(medicine_id,medicine_count,medicine_name,medicine_price,order_id)
+values
+(#{medicineId},#{medicineCount},#{medicineName},#{medicinePrice},#{orderId})
+</insert>
+
+<update id="update" parameterType="com.ppss.model.ItemModel">
+update from t_item
+medicine_id=#{medicineId},
+medicine_count=#{medicineCount},
+medicine_name=#{medicineName},
+medicine_price=#{medicinePrice},
+order_id=#{orderId}
+from t-item
+where
+itme_id=#{itemId}
+</update>
+
+<delete id="del" parameterType="java.lang.String">
+delete from t_item
+where order_id=#{orderId}
+</delete>
+
+<select id="findByCondition"  parameterType="com.ppss.model.ItemModel" resultType="com.ppss.model.ItemModel">
+select 
+item_id itemId,
+medicine_id medicineId,
+medicine_count medicineCount,
+medicine_name medicineName,
+medicine_price medicinePrice,
+order_id orderId
+from t_item
+where 1=1
+<if test="medicineId!='' and medicineId!=null">
+and medicine_id=#{medicineId}
+</if>
+<if test="medicineName!='' and medicineName!=null">
+and medicine_name=#{medicineName}
+</if>
+</select>
+
+<select id="findByOrderId" parameterType="java.lang.String" resultType="com.ppss.model.ItemModel">
+select 
+item_id itemId,
+medicine_id medicineId,
+medicine_count medicineCount,
+medicine_name medicineName,
+medicine_price medicinePrice,
+order_id orderId
+from t_item
+where 
+order_id=#{orderId}
+</select>
+
+<select id="findOne" parameterType="java.lang.Integer" resultType="com.ppss.model.ItemModel">
+select 
+item_id itemId,
+medicine_id medicineId,
+medicine_count medicineCount,
+medicine_name medicineName,
+medicine_price medicinePrice,
+order_id orderId
+from t_item
+where 
+item_id=#{item_id}
+</select>
+</mapper>

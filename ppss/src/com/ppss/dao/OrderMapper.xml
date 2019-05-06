@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppss.dao.OrderDao"><!--命名空间和Dao同名 -->
+
+<insert id="add" parameterType="com.ppss.model.OrderModel">
+insert into t_order
+(order_id,user_id,create_time,send_time,get_time,shop_name,order_amount,user_address,send_address,order_status,order_remark,order_remark_words)
+values
+(#{orderId},#{userId},#{createTime},#{sendTime},#{getTime},#{shopName},#{orderAmount},#{userAddress},#{sendAddress},#{orderStatus},#{orderRemark},#{orderRemarkWords})
+</insert>
+
+<update id="update" parameterType="com.ppss.model.OrderModel">
+update t_order
+set 
+user_Id=#{userId},
+create_time=#{createTime},
+send_time=#{sendTime},
+get_time=#{getTime},
+shop_name=#{shopName},
+order_amount=#{orderAmount},
+user_address=#{userAddress},
+send_address=#{sendAddress},
+order_status=#{orderStatus},
+order_remark=#{orderRemark},
+order_remark_words=#{orderRemarkWords}
+where
+order_id=#{orderId}
+</update>
+
+<delete id="del" parameterType="java.lang.String">
+delete from t_order
+where order_id=#{orderId]
+</delete>
+
+
+<select id="findByCondition" parameterType="com.ppss.model.OrderModel" resultType="com.ppss.model.OrderModel">
+select 
+order_id orderId,
+t2.user_name userId,
+create_time createTime,
+send_time sendTime,
+get_time getTime,
+shop_name shopName,
+order_amount orderAmount,
+t1.user_address userAddress,
+send_address sendAddress,
+order_status orderStatus,
+order_remark orderRemark,
+order_remark_words orderRemarkWords
+from t_order as t1 , t_user as t2
+where t1.user_id=t2.user_id
+<if test="orderId!='' and orderId!=null">
+and order_id=#{orderId}
+</if>
+<if test="userId!='' and  userId!=null">
+and t1.user_id=#{userId}
+</if>
+<if test="createTime!='' and createTime!=null">
+and date(create_time) = date(#{createTime})
+</if>
+<if test="sendTime!='' and sendTime!=null">
+and date(send_time) = date(#{sendTime})
+</if>
+<if test="getTime!='' and getTime!=null">
+and date(get_time) =date(#{getTime})
+</if>
+<if test="orderStatus==1 or orderStatus==2 or orderStatus==3">
+and order_status=#{orderStatus}
+</if>
+order by create_time desc
+</select>
+
+<select id="findOne" parameterType="java.lang.String" resultType="com.ppss.model.OrderModel">
+select 
+order_id orderId,
+user_Id userId,
+create_time createTime,
+send_time sendTime,
+get_time getTime,
+shop_name shopName,
+order_amount orderAmount,
+user_address userAddress,
+send_address sendAddress,
+order_status orderStatus,
+order_remark orderRemark,
+order_remark_words orderRemarkWords
+from t_order
+where 
+order_id=#{orderId}
+</select>
+</mapper>

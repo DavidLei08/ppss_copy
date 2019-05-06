@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppss.dao.UserDao"><!--命名空间和Dao同名 -->
+
+<insert id="add" parameterType="com.ppss.model.UserModel">
+insert into t_user
+(user_id,user_name,password,real_name,identity_id,user_address,tel_num,status)
+values 
+(#{userId},#{userName},#{password},#{realName},#{identityId},#{userAddress},#{telNum},#{status})
+</insert>
+
+<update id="update" parameterType="com.ppss.model.UserModel">
+update t_user
+set
+user_name=#{userName},
+password=#{password},
+real_name=#{realName},
+identity_id=#{identityId},
+user_address=#{userAddress},
+tel_num=#{telNum},
+status=#{status}
+where 
+user_id=#{userId}
+</update>
+
+<delete id="del" parameterType="java.lang.String">
+delete from t_user
+where 
+user_id=#{userId}
+</delete>
+
+<select id="findByCondition" parameterType="com.ppss.model.UserModel" resultType="com.ppss.model.UserModel">
+select 
+user_id userId,
+user_name userName,
+password password,
+real_name realName,
+identity_id identityId,
+user_address userAddress,
+tel_num telNum,
+status status
+from t_user
+where 1=1
+<if test="status==0 or status==1">
+and status=#{status}
+</if>
+<if test="userId!='' and userId!=null">
+and user_id=#{userId}
+</if>
+<if test="userName!='' and userName!=null">
+and user_name=#{userName}
+</if>
+<if test="realName!='' and realName!=null">
+and  real_name=#{realName}
+</if>
+<if test="telNum!='' and telNum!=null">
+and  tel_num=#{telNum}
+</if>
+</select>
+
+<select id="loginAuth" parameterType="com.ppss.model.UserModel" resultType="com.ppss.model.UserModel">
+select 
+user_id userId,
+user_name userName,
+password password,
+real_name realName,
+identity_id identityId,
+user_address userAddress,
+tel_num telNum,
+status status
+from t_user
+where 
+user_name=#{userName}
+and 
+password=#{password}
+</select>
+
+<select id="findOne" parameterType="java.lang.String" resultType="com.ppss.model.UserModel">
+select 
+user_id userId,
+user_name userName,
+password password,
+real_name realName,
+identity_id identityId,
+user_address userAddress,
+tel_num telNum,
+status status
+from t_user
+where 
+user_id=#{userId}
+</select>
+</mapper>

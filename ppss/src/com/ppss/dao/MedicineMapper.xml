@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppss.dao.MedicineDao"><!--命名空间和Dao同名 -->
+
+<insert id="add" parameterType="com.ppss.model.MedicineModel">
+insert into t_medicine
+(medicine_id,medicine_name,medicine_price,medicine_origin_place,medicine_effect,medicine_sp,medicine_img,medicine_inventory)
+values
+(#{medicineId},#{medicineName},#{medicinePrice},#{medicineOriginPlace},#{medicineEffect},#{medicineSp},#{medicineImg},#{medicineInventory})
+</insert>
+
+<update id="update" parameterType="com.ppss.model.MedicineModel">
+update t_medicine
+set 
+medicine_name=#{medicineName},
+medicine_price=#{medicinePrice},
+medicine_origin_place=#{medicineOriginPlace},
+medicine_effect=#{medicineEffect},
+medicine_sp=#{medicineSp},
+medicine_img=#{medicineImg},
+medicine_inventory=#{medicineInventory}
+where
+medicine_id=#{medicineId}
+</update>
+
+<delete id="del" parameterType="java.lang.String">
+delete from t_medicine
+where 
+medicine_id=#{medicineId}
+</delete>
+
+<select id="findByCondition" parameterType="com.ppss.model.MedicineModel" resultType="com.ppss.model.MedicineModel">
+select 
+medicine_id medicineId,
+medicine_name medicineName,
+medicine_price medicinePrice,
+medicine_origin_place medicineOriginPlace,
+medicine_effect medicineEffect,
+medicine_sp medicineSp,
+medicine_img medicineImg,
+medicine_inventory medicineInventory
+from t_medicine
+where 1=1
+<if test="medicineId!='' and medicineId!=null">
+and medicine_id=#{medicineId}
+</if>
+<if test="medicineName!='' and medicineName!=null">
+and medicine_name=#{medicineName}
+</if>
+<if test="medicineOriginPlace!='' and medicineOriginPlace!=null">
+and medicine_origin_place like concat(concat('%',#{medicineOriginPlace}),'%')
+</if>
+<if test="medicineEffect!='' and medicineEffect!=null">
+and medicine_effect like  concat(concat('%',#{medicineEffect}),'%')
+</if>
+</select>
+
+<select id="findOne" parameterType="java.lang.String"  resultType="com.ppss.model.MedicineModel">
+select 
+medicine_id medicineId,
+medicine_name medicineName,
+medicine_price medicinePrice,
+medicine_origin_place medicineOriginPlace,
+medicine_effect medicineEffect,
+medicine_sp medicineSp,
+medicine_img medicineImg,
+medicine_inventory medicineInventory
+from t_medicine
+where 
+medicine_id =#{medicineId}
+</select>
+</mapper>
