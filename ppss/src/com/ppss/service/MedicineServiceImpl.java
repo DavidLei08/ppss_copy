@@ -75,5 +75,10 @@ public class MedicineServiceImpl implements MedicineService {
 		return imageBuffer;
 	}
 
+	@Override
+	public List<MedicineModel> findNotEnoughMedicine() {
+		return medicineDao.findNotEoughMedicine();
+	}
+
 
 }

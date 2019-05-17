@@ -64,7 +64,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void orderSend(String orderId) {
+	public void orderSend(String orderId) throws Exception {
 		//根据订单编号取出所有的订单项信息
 		List<ItemModel> itemList=itemDao.findByOrderId(orderId);
 		//迭代订单项信息
@@ -73,6 +73,11 @@ public class OrderServiceImpl implements OrderService {
 		MedicineModel medicineModel=medicineDao.findOne(itemModel.getMedicineId());
 		//计算发货后的库存量
 		medicineModel.setMedicineInventory(medicineModel.getMedicineInventory()-itemModel.getMedicineCount());
+		//如果库存量不足，抛出一个异常
+		if(medicineModel.getMedicineInventory()<0){
+			throw new Exception();
+			
+		}
 		//更新该药品编号的库存记录
 		medicineDao.update(medicineModel);
 		}

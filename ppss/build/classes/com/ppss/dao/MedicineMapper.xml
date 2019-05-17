@@ -71,4 +71,18 @@ from t_medicine
 where 
 medicine_id =#{medicineId}
 </select>
+<select id="findNotEoughMedicine"  resultType="com.ppss.model.MedicineModel">
+select 
+medicine_id medicineId,
+medicine_name medicineName,
+medicine_price medicinePrice,
+medicine_origin_place medicineOriginPlace,
+medicine_effect medicineEffect,
+medicine_sp medicineSp,
+medicine_img medicineImg,
+medicine_inventory medicineInventory
+from t_medicine
+where 
+medicine_inventory &lt;50
+</select>
 </mapper>

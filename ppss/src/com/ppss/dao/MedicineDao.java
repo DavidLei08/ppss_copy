@@ -12,4 +12,5 @@ public interface MedicineDao {
 	public void del(String medicineId);
 	public List<MedicineModel> findByCondition(MedicineModel medicineModel);
 	public MedicineModel findOne(String medicineId);
+	public   List<MedicineModel>  findNotEoughMedicine();
 }

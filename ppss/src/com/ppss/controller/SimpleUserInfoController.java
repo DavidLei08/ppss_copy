@@ -2,6 +2,8 @@ package com.ppss.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,7 @@ import com.ppss.service.UserService;
 @RequestMapping("/simpleuser")
 @Controller
 public class SimpleUserInfoController {
-	
+	private static Logger logger = LoggerFactory.getLogger(SimpleUserInfoController.class);
 	/**
 	 * 用户信息管理用service
 	 */
@@ -60,6 +62,7 @@ public class SimpleUserInfoController {
 		} catch (Exception e){
 			//定义错误信息
 			String errorMessage="个人信息修改失败";
+			logger.error(e.getMessage(),errorMessage);
 			//信息存入
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}

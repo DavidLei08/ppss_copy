@@ -8,6 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +38,8 @@ import com.ppss.utils.MathHelp;
 @RequestMapping("/medicineshop")
 @Controller
 public class MedicineShopController {
-
+	
+	private static Logger logger = LoggerFactory.getLogger(MedicineShopController.class);
 	/**
 	 * 药品信息管理用Service
 	 */
@@ -240,9 +243,9 @@ public class MedicineShopController {
 		// 订单的状态的设定为0-待支付
 		orderModel.setOrderStatus(0);
 		// 订单的发货地址设定
-		orderModel.setSendAddress("安徽合肥瑶海区学士路132号磨店千家惠大药房");
+		orderModel.setSendAddress("安徽合肥蜀山区百姓缘大药房");
 		// 订单的药店设定
-		orderModel.setShopName("磨店千家惠大药房");
+		orderModel.setShopName("百姓缘大药房");
 		// 订单的收获地址的设定
 		orderModel.setUserAddress(user.getUserAddress());
 		// 订单的用户id的设定
@@ -311,6 +314,7 @@ public class MedicineShopController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "账号异常，下单失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 存入信息
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 			// 订单项移除
@@ -372,6 +376,7 @@ public class MedicineShopController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "订单状态异常，订单取消失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 存入信息
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}

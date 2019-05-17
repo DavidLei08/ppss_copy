@@ -25,8 +25,7 @@
 	z-index: 1;
 	left: 33%;
 	top: 33%;
-	background-color: rgba(174, 235, 238, 0.5);
-	border: 1px solid #0066FF;
+	background-color: rgba(255,255,255, 0.5);
 }
 	</style>
 	</head>

@@ -184,7 +184,6 @@ hr {
 			<tr height="30px">
 				<th>序号</th>
 				<th width="120px">图片</th>
-				<th>药品编号</th>
 				<th>药品通用名</th>
 				<th width="200px">药用效果</th>
 				<th width="200px">药品产地</th>
@@ -198,13 +197,12 @@ hr {
 					<td><img alt="药品图片"
 						src="${pageContext.request.contextPath}/medicineshop/medicineimg?medicineId=${medicine.medicineId}"
 						style="width: 100px;"></td>
-					<td>${medicine.medicineId}</td>
 					<td>${medicine.medicineName}</td>
 					<td>${medicine.medicineEffect}</td>
 					<td>${medicine.medicineOriginPlace}</td>
 					<td>${medicine.medicinePrice}&nbsp;元</td>
 					<td>${medicine.medicineSp}</td>
-					<td><button type="button"
+					<td><button type="button" style="background-color:#0080c0;color: white;border: 0"
 							onclick="toShopCar('${medicine.medicineId}')">
 							<i class="fa fa-cart-plus  fa-1x"></i>&nbsp;添加到购物车
 						</button></td>

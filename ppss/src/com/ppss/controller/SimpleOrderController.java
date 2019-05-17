@@ -2,6 +2,8 @@ package com.ppss.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ import com.ppss.service.OrderService;
 @Controller
 public class SimpleOrderController {
 	
+	private static Logger logger = LoggerFactory.getLogger(MedicineShopController.class);
 	/**
 	 * 订单管理用service
 	 */
@@ -104,6 +107,7 @@ public class SimpleOrderController {
 		} catch (Exception e) {
 			//定义错误信息
 			String errorMessage="订单状态异常，取货失败";
+			logger.error(e.getMessage(),errorMessage);
 			//错误信息存入
 			redirectAttributes.addFlashAttribute("errorMessage",errorMessage);
 		}

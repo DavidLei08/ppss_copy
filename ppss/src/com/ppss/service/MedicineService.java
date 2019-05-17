@@ -44,6 +44,11 @@ public interface MedicineService {
 	 * @return
 	 */
 	public MedicineModel  medicinefindOne(String medicineId);
+	/**
+	 * 查询库存量不足50的药品库存记录
+	 * @return
+	 */
+	public List<MedicineModel> findNotEnoughMedicine();
 	
 	/**
 	 * 获取药品图片的二进制流

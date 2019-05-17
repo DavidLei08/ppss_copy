@@ -41,8 +41,9 @@ public interface OrderService {
 	/**
 	 * 管理员订单发货，订单变更为已发货
 	 * @param orderId
+	 * @throws Exception 
 	 */
-	public void orderSend(String orderId);
+	public void orderSend(String orderId) throws Exception;
 	
 	/**
 	 * 普通用户订单取货,订单变更为已取货

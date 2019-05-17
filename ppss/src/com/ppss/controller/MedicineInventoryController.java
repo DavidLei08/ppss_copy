@@ -1,4 +1,4 @@
-package com.ppss.controller;
+ package com.ppss.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +31,8 @@ import com.ppss.utils.MathHelp;
 @RequestMapping("/inventory")
 @Controller
 public class MedicineInventoryController {
-
+	
+	private static Logger logger = LoggerFactory.getLogger(ManagerUserInfoController.class);
 	/**
 	 * 要药品及库库存用service
 	 */
@@ -118,6 +121,7 @@ public class MedicineInventoryController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "库存信息添加失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 信息存入
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}
@@ -169,6 +173,7 @@ public class MedicineInventoryController {
 		} catch (Exception e) {
 			// 走入cath分支，定义更新失败信息
 			String errorMessage = "库存信息更新失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 信息存入
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}
@@ -194,6 +199,7 @@ public class MedicineInventoryController {
 		} catch (Exception e) {
 			// 定义错误信息
 			String errorMessage = "库存信息删除失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 信息存入
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}

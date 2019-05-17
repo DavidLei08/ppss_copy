@@ -1,5 +1,7 @@
 package com.ppss.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,7 @@ import com.ppss.service.UserService;
 @Controller
 public class ManagerUserInfoController {
 
+	private static Logger logger = LoggerFactory.getLogger(ManagerUserInfoController.class);
 	/**
 	 * 用户管理用service
 	 */
@@ -85,6 +88,7 @@ public class ManagerUserInfoController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "用户信息添加失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 信息存入
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}
@@ -128,6 +132,7 @@ public class ManagerUserInfoController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "用户信息更新失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 存入信息
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}
@@ -154,6 +159,7 @@ public class ManagerUserInfoController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "用户信息删除失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 信息存入
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}

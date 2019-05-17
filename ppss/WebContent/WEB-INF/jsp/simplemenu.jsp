@@ -25,7 +25,7 @@
 <td><a href="${pageContext.request.contextPath }/simpleuser/init" target="mainFrame" class="button button-primary button-small "><font size="3"><i class="fa fa-user-circle fa-1x"></i>&nbsp;个人中心</font></a></td>
 <td width="40%">&nbsp;</td>
 <td align="right"><font style="font-size:13px">用户：</font><font  style="font-size:13px" color="blue">${user.userName}</font><br>
-<button onclick="parent.location.href='${pageContext.request.contextPath}/auth/logout'" style="font-size:12px"><i class="fa fa-external-link-square fa-1x"></i>退出登录</button>
+<button onclick="parent.location.href='${pageContext.request.contextPath}/auth/logout'" style="font-size:12px;background-color:#0080c0;color: white;border: 0"><i class="fa fa-external-link-square fa-1x"></i>退出登录</button>
 </td>
 </tr>
 </table>

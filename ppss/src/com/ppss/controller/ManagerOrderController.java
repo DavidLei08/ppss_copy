@@ -1,5 +1,7 @@
 package com.ppss.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,7 @@ import com.ppss.service.OrderService;
 @Controller
 public class ManagerOrderController {
 
+	private static Logger logger = LoggerFactory.getLogger(ManagerOrderController.class);
 	/**
 	 * 订单服service
 	 */
@@ -74,6 +77,7 @@ public class ManagerOrderController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "订单发货失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 存入信息
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}
@@ -97,6 +101,7 @@ public class ManagerOrderController {
 		} catch (Exception e) {
 			// 定义失败信息
 			String errorMessage = "订单退款失败";
+			logger.error(e.getMessage(),errorMessage);
 			// 存入信息
 			redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
 		}
